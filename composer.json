@@ -1,0 +1,34 @@
+{
+  "name": "povils/omnipay-paysera",
+  "type": "library",
+  "description": "Paysera gateway for Omnipay payment processing library",
+  "keywords": [
+    "paysera",
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment",
+    "purchase"
+  ],
+  "homepage": "https://github.com/povils/omnipay-paysera",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Povilas Susinskas",
+      "email": "povilassusinskas@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\Paysera\\": "src/",
+      "Omnipay\\Paysera\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "omnipay/common": "~2.0"
+  },
+  "require-dev": {
+    "omnipay/tests": "~2.0"
+  }
+}
