@@ -38,7 +38,7 @@ class PurchaseDataGenerator
             'test' => $request->getTestMode() ? '1' : '0',
         ];
 
-        if(null !== $customer = $request->getCustomer()){
+        if (null !== $customer = $request->getCustomer()) {
             $customerData = [
                 'p_firstname' => $customer->getFirstName(),
                 'p_lastname' => $customer->getLastName(),
