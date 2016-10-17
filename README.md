@@ -13,7 +13,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "povils/omnipay-paysera": "dev-master"
+        "povils/omnipay-paysera": "~1.0"
     }
 }
 ```
