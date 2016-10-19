@@ -50,7 +50,7 @@ class AcceptNotificationRequest extends AbstractRequest
      */
     protected function parseData($data)
     {
-        $parameters = [];
+        $parameters = array();
         parse_str(Encoder::decode($data), $parameters);
 
         return null !== $parameters ? $parameters : array();
