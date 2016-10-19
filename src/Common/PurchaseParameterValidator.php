@@ -58,25 +58,25 @@ class PurchaseParameterValidator
      */
     protected static function getRequestSpecifications()
     {
-        return [
-            ['orderid', 40, true, ''],
-            ['accepturl', 255, true, ''],
-            ['cancelurl', 255, true, ''],
-            ['callbackurl', 255, true, ''],
-            ['lang', 3, false, '/^[a-z]{3}$/i'],
-            ['amount', 11, false, '/^\d+$/'],
-            ['currency', 3, false, '/^[a-z]{3}$/i'],
-            ['payment', 20, false, ''],
-            ['country', 2, false, '/^[a-z_]{2}$/i'],
-            ['p_firstname', 255, false, ''],
-            ['p_lastname', 255, false, ''],
-            ['p_email', 255, false, ''],
-            ['p_street', 255, false, ''],
-            ['p_city', 255, false, ''],
-            ['p_state', 20, false, ''],
-            ['p_zip', 20, false, ''],
-            ['p_countrycode', 2, false, '/^[a-z]{2}$/i'],
-            ['test', 1, false, '/^[01]$/'],
-        ];
+        return array(
+            array('orderid', 40, true, ''),
+            array('accepturl', 255, true, ''),
+            array('cancelurl', 255, true, ''),
+            array('callbackurl', 255, true, ''),
+            array('lang', 3, false, '/^[a-z]{3}$/i'),
+            array('amount', 11, false, '/^\d+$/'),
+            array('currency', 3, false, '/^[a-z]{3}$/i'),
+            array('payment', 20, false, ''),
+            array('country', 2, false, '/^[a-z_]{2}$/i'),
+            array('p_firstname', 255, false, ''),
+            array('p_lastname', 255, false, ''),
+            array('p_email', 255, false, ''),
+            array('p_street', 255, false, ''),
+            array('p_city', 255, false, ''),
+            array('p_state', 20, false, ''),
+            array('p_zip', 20, false, ''),
+            array('p_countrycode', 2, false, '/^[a-z]{2}$/i'),
+            array('test', 1, false, '/^[01]$/'),
+        );
     }
 }

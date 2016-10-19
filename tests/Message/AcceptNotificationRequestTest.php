@@ -8,8 +8,6 @@
 
 namespace Omnipay\Paysera\Tests\Message;
 
-use Omnipay\Common\Exception\InvalidRequestException;
-use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\NotificationInterface;
 use Omnipay\Paysera\Common\Encoder;
 use Omnipay\Paysera\Common\SignatureGenerator;
@@ -100,7 +98,7 @@ class AcceptNotificationRequestTest extends TestCase
 
         $this->httpRequest->attributes->replace($notifyData);
 
-        $this->setExpectedException(InvalidRequestException::class, 'Invalid signature');
+        $this->setExpectedException('\Omnipay\Common\Exception\InvalidRequestException', 'Invalid signature');
         $this->createRequest()->send();
     }
 
@@ -111,7 +109,7 @@ class AcceptNotificationRequestTest extends TestCase
 
         $this->httpRequest->attributes->replace($notifyData);
 
-        $this->setExpectedException(InvalidRequestException::class, 'Invalid signature');
+        $this->setExpectedException('\Omnipay\Common\Exception\InvalidRequestException', 'Invalid signature');
         $this->createRequest()->send();
     }
 
@@ -122,7 +120,7 @@ class AcceptNotificationRequestTest extends TestCase
 
         $this->httpRequest->attributes->replace($notifyData);
 
-        $this->setExpectedException(InvalidRequestException::class, 'Invalid signature');
+        $this->setExpectedException('\Omnipay\Common\Exception\InvalidRequestException', 'Invalid signature');
         $this->createRequest()->send();
     }
 
@@ -133,7 +131,7 @@ class AcceptNotificationRequestTest extends TestCase
 
         $this->httpRequest->attributes->replace($this->notifyData($pendingData));
 
-        $this->setExpectedException(InvalidResponseException::class);
+        $this->setExpectedException('\Omnipay\Common\Exception\InvalidResponseException');
         $this->createRequest()->send();
     }
 
@@ -146,11 +144,11 @@ class AcceptNotificationRequestTest extends TestCase
     {
         $encodedData = $this->getEncodedData($data);
 
-        return [
+        return array(
             'data' => $encodedData,
             'ss1' => SignatureGenerator::generate($encodedData, $this->password),
             'ss2' => $this->getSS2Signature($encodedData),
-        ];
+        );
     }
 
     /**
@@ -190,7 +188,7 @@ class AcceptNotificationRequestTest extends TestCase
      */
     public function getSuccessData()
     {
-        return [
+        return array(
             'projectId' => $this->projectId,
             'orderid' => 'order_id',
             'version' => '1.6',
@@ -202,7 +200,7 @@ class AcceptNotificationRequestTest extends TestCase
             'paytext' => 'some information',
             'status' => '1',
             'test' => '1',
-        ];
+        );
     }
 
     /**

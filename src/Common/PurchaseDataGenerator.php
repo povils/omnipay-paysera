@@ -24,7 +24,7 @@ class PurchaseDataGenerator
      */
     public static function generate(PurchaseRequest $request)
     {
-        $parameters = [
+        $parameters = array(
             'projectid' => $request->getProjectId(),
             'orderid' => $request->getTransactionId(),
             'accepturl' => $request->getReturnUrl(),
@@ -36,10 +36,10 @@ class PurchaseDataGenerator
             'amount' => $request->getAmountInteger(),
             'currency' => $request->getCurrency(),
             'test' => $request->getTestMode() ? '1' : '0',
-        ];
+        );
 
         if (null !== $card = $request->getCard()) {
-            $customerData = [
+            $customerData = array(
                 'p_firstname' => $card->getFirstName(),
                 'p_lastname' => $card->getLastName(),
                 'p_email' => $card->getEmail(),
@@ -48,7 +48,7 @@ class PurchaseDataGenerator
                 'p_state' => $card->getState(),
                 'p_zip' => $card->getPostcode(),
                 'country' => $card->getCountry(),
-            ];
+            );
 
             $parameters = array_merge($parameters, $customerData);
         }

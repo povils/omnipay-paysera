@@ -21,11 +21,11 @@ class AcceptNotificationRequest extends AbstractRequest
 {
     public function getData()
     {
-        return [
+        return array(
             'data' => $this->httpRequest->get('data'),
             'ss1' => $this->httpRequest->get('ss1'),
             'ss2' => $this->httpRequest->get('ss2'),
-        ];
+        );
     }
 
     /**
@@ -53,6 +53,6 @@ class AcceptNotificationRequest extends AbstractRequest
         $parameters = [];
         parse_str(Encoder::decode($data), $parameters);
 
-        return null !== $parameters ? $parameters : [];
+        return null !== $parameters ? $parameters : array();
     }
 }

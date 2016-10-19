@@ -22,7 +22,7 @@ class Encoder
      */
     public static function encode($input)
     {
-        return strtr(base64_encode($input), ['+' => '-', '/' => '_']);
+        return strtr(base64_encode($input), array('+' => '-', '/' => '_'));
     }
 
     /**
@@ -32,6 +32,6 @@ class Encoder
      */
     public static function decode($input)
     {
-        return base64_decode(strtr($input, ['-' => '+', '_' => '/']));
+        return base64_decode(strtr($input, array('-' => '+', '_' => '/')));
     }
 }

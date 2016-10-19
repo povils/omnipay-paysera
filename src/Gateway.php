@@ -34,10 +34,10 @@ class Gateway extends AbstractGateway
      */
     public function getDefaultParameters()
     {
-        return [
+        return array(
             'testMode' => true,
             'version' => self::VERSION,
-        ];
+        );
     }
 
     /**
@@ -99,16 +99,16 @@ class Gateway extends AbstractGateway
      *
      * @return PurchaseRequest
      */
-    public function purchase(array $parameters = [])
+    public function purchase(array $parameters = array())
     {
-        return $this->createRequest(PurchaseRequest::class, $parameters);
+        return $this->createRequest('\Omnipay\Paysera\Message\PurchaseRequest', $parameters);
     }
 
     /**
-     * @return PurchaseRequest
+     * @return AcceptNotificationRequest
      */
     public function acceptNotification()
     {
-        return $this->createRequest(AcceptNotificationRequest::class, []);
+        return $this->createRequest('\Omnipay\Paysera\Message\AcceptNotificationRequest', array());
     }
 }

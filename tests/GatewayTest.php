@@ -9,8 +9,6 @@
 namespace Omnipay\Paysera\Tests;
 
 use Omnipay\Paysera\Gateway;
-use Omnipay\Paysera\Message\AcceptNotificationRequest;
-use Omnipay\Paysera\Message\PurchaseRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 /**
@@ -58,8 +56,8 @@ class GatewayTest extends GatewayTestCase
     {
         $this->assertTrue($this->gateway->supportsPurchase());
 
-        $request = $this->gateway->purchase(['amount' => 10.5]);
-        $this->assertInstanceOf(PurchaseRequest::class, $request);
+        $request = $this->gateway->purchase(array('amount' => 10.5));
+        $this->assertInstanceOf('\Omnipay\Paysera\Message\PurchaseRequest', $request);
         $this->assertSame(1050, $request->getAmountInteger());
     }
 
@@ -68,6 +66,6 @@ class GatewayTest extends GatewayTestCase
         $this->assertTrue($this->gateway->supportsAcceptNotification());
 
         $request = $this->gateway->acceptNotification();
-        $this->assertInstanceOf(AcceptNotificationRequest::class, $request);
+        $this->assertInstanceOf('\Omnipay\Paysera\Message\AcceptNotificationRequest', $request);
     }
 }

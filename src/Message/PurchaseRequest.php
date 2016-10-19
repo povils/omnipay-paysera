@@ -27,10 +27,10 @@ class PurchaseRequest extends AbstractRequest
 
         $data = PurchaseDataGenerator::generate($this);
 
-        return [
+        return array(
             'data' => $data,
             'sign' => SignatureGenerator::generate($data, $this->getPassword()),
-        ];
+        );
     }
 
     /**

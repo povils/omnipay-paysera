@@ -8,7 +8,6 @@
 
 namespace Omnipay\Paysera\Tests\Message;
 
-use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Paysera\Common\PurchaseDataGenerator;
 use Omnipay\Paysera\Common\SignatureGenerator;
 use Omnipay\Paysera\Message\PurchaseRequest;
@@ -68,21 +67,21 @@ class PurchaseRequestTest extends TestCase
 
     public function testSendFailure_InvalidParameter_MissingRequired()
     {
-        $this->setExpectedException(InvalidRequestException::class);
+        $this->setExpectedException('\Omnipay\Common\Exception\InvalidRequestException');
         $this->request->initialize($this->getParametersWithMissing());
         $this->request->send();
     }
 
     public function testSendFailure_InvalidParameter_TooLong()
     {
-        $this->setExpectedException(InvalidRequestException::class);
+        $this->setExpectedException('\Omnipay\Common\Exception\InvalidRequestException');
         $this->request->initialize($this->getParametersWithOneTooLong());
         $this->request->send();
     }
 
     public function testSendFailure_InvalidParameter_Regex()
     {
-        $this->setExpectedException(InvalidRequestException::class);
+        $this->setExpectedException('\Omnipay\Common\Exception\InvalidRequestException');
         $this->request->initialize($this->getParametersWithOneInvalidRegex());
         $this->request->send();
     }
@@ -92,7 +91,7 @@ class PurchaseRequestTest extends TestCase
      */
     private function getValidParameters()
     {
-        return [
+        return array(
             'projectId' => $this->projectId,
             'password' => $this->password,
             'transactionId' => 'order_id',
@@ -102,7 +101,7 @@ class PurchaseRequestTest extends TestCase
             'language' => 'LIT',
             'currency' => 'EUR',
             'amount' => 10.0,
-            'card' => [
+            'card' => array(
                 'firstName' => 'first_name',
                 'lastName' => 'last_name',
                 'email' => 'email@mail.com',
@@ -111,8 +110,8 @@ class PurchaseRequestTest extends TestCase
                 'postCode' => 12345,
                 'country' => 'lt',
                 'state' => 'state',
-            ],
-        ];
+            ),
+        );
     }
 
     /**
@@ -120,10 +119,10 @@ class PurchaseRequestTest extends TestCase
      */
     private function getParametersWithMissing()
     {
-        return [
+        return array(
             'projectId' => $this->projectId,
             'password' => $this->password,
-        ];
+        );
     }
 
     /**
@@ -155,9 +154,9 @@ class PurchaseRequestTest extends TestCase
     {
         $data = PurchaseDataGenerator::generate($this->request);
 
-        return [
+        return array(
             'data' => $data,
             'sign' => SignatureGenerator::generate($data, $this->password),
-        ];
+        );
     }
 }
