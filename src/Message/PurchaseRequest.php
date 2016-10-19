@@ -10,7 +10,6 @@ namespace Omnipay\Paysera\Message;
 
 use Omnipay\Paysera\Common\PurchaseDataGenerator;
 use Omnipay\Paysera\Common\SignatureGenerator;
-use Omnipay\Paysera\Customer;
 
 /**
  * Class PurchaseRequest
@@ -78,27 +77,5 @@ class PurchaseRequest extends AbstractRequest
     public function setLanguage($value)
     {
         return $this->setParameter('language', $value);
-    }
-
-    /**
-     * @return Customer
-     */
-    public function getCustomer()
-    {
-        return $this->getParameter('customer');
-    }
-
-    /**
-     * @param Customer $value
-     *
-     * @return $this
-     */
-    public function setCustomer($value)
-    {
-        if ($value && false === $value instanceof Customer) {
-            $value = new Customer($value);
-        }
-
-        return $this->setParameter('customer', $value);
     }
 }

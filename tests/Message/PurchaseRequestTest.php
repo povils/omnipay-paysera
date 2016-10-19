@@ -102,14 +102,13 @@ class PurchaseRequestTest extends TestCase
             'language' => 'LIT',
             'currency' => 'EUR',
             'amount' => 10.0,
-            'customer' => [
+            'card' => [
                 'firstName' => 'first_name',
                 'lastName' => 'last_name',
                 'email' => 'email@mail.com',
                 'city' => 'city',
-                'street' => 'street',
+                'address1' => 'street',
                 'postCode' => 12345,
-                'countryCode' => 'lt',
                 'country' => 'lt',
                 'state' => 'state',
             ],

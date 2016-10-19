@@ -38,17 +38,16 @@ class PurchaseDataGenerator
             'test' => $request->getTestMode() ? '1' : '0',
         ];
 
-        if (null !== $customer = $request->getCustomer()) {
+        if (null !== $card = $request->getCard()) {
             $customerData = [
-                'p_firstname' => $customer->getFirstName(),
-                'p_lastname' => $customer->getLastName(),
-                'p_email' => $customer->getEmail(),
-                'p_street' => $customer->getStreet(),
-                'p_city' => $customer->getCity(),
-                'p_state' => $customer->getState(),
-                'p_zip' => $customer->getPostcode(),
-                'p_countrycode' => $customer->getCountryCode(),
-                'country' => $customer->getCountry(),
+                'p_firstname' => $card->getFirstName(),
+                'p_lastname' => $card->getLastName(),
+                'p_email' => $card->getEmail(),
+                'p_street' => $card->getAddress1(),
+                'p_city' => $card->getCity(),
+                'p_state' => $card->getState(),
+                'p_zip' => $card->getPostcode(),
+                'country' => $card->getCountry(),
             ];
 
             $parameters = array_merge($parameters, $customerData);
