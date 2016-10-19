@@ -54,11 +54,12 @@ class AcceptNotificationRequestTest extends TestCase
         $response = $this->createRequest()->send();
 
         $this->assertTrue($response->isSuccessful());
-        $this->assertSame($this->getSuccessData()['orderid'], $response->getTransactionReference());
+        $successData = $this->getSuccessData();
+        $this->assertSame($successData['orderid'], $response->getTransactionReference());
         $this->assertSame(NotificationInterface::STATUS_COMPLETED, $response->getTransactionStatus());
         $this->assertSame('1', $response->getCode());
         $this->assertTrue($response->isTestMode());
-        $this->assertSame($this->getSuccessData()['paytext'], $response->getMessage());
+        $this->assertSame($successData['paytext'], $response->getMessage());
     }
 
     public function testSendFailed()
