@@ -179,7 +179,7 @@ class AcceptNotificationRequestTest extends TestCase
 
         $response = $this->getMockHttpResponse('PubKeyResponse.txt');
         $response->setBody($publicKey['key']);
-        $this->setMockHttpResponse([$response]);
+        $this->setMockHttpResponse(array($response));
 
         return Encoder::encode($ss2);
     }
