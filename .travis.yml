@@ -6,6 +6,13 @@ php:
   - hhvm
 
 before_script:
-  - composer install -n --dev --prefer-source
+  - travis_retry composer self-update
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
-script: vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpunit --coverage-text
+script:
+  - phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpunit --coverage-text
+
+after_script:
+  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+  - vendor/bin/coveralls -v
