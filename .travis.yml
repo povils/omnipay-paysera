@@ -9,11 +9,9 @@ php:
 
 before_script:
   - composer install -n --dev --prefer-source
+  - composer require satooshi/php-coveralls --dev
 
-script:
-  - phpunit --coverage-text --coverage-clover=coverage.clover
-  - vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpunit --coverage-text
+script: vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
 after_script:
-  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
-  - vendor/bin/coveralls -v
+  - php vendor/bin/coveralls -v
