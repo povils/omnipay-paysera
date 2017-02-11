@@ -40,7 +40,7 @@ class PurchaseParameterValidator
                     ));
                 }
 
-                if ($regexp !== '' && !preg_match($regexp, $data[$name])) {
+                if ('' !== $regexp && false === preg_match($regexp, $data[$name])) {
                     throw new InvalidRequestException(sprintf("'%s' value '%s' is invalid.", $name, $data[$name]));
                 }
             }

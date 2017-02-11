@@ -17,10 +17,8 @@ use Guzzle\Http\ClientInterface;
  */
 class SignatureValidator
 {
-    /**
-     * @var string
-     */
-    private static $endpoint = 'http://www.paysera.com/download/public.key';
+
+    const ENDPOINT = 'http://www.paysera.com/download/public.key';
 
     /**
      * @param array           $data
@@ -53,9 +51,9 @@ class SignatureValidator
      */
     private static function isValidSS2(array $data, ClientInterface $client)
     {
-        $response = $client->get(self::$endpoint)->send();
+        $response = $client->get(self::ENDPOINT)->send();
         if (200 === $response->getStatusCode() && false !== $publicKey = openssl_get_publickey($response->getBody())) {
-            return openssl_verify($data['data'], Encoder::decode($data['ss2']), $publicKey) === 1;
+            return 1 === openssl_verify($data['data'], Encoder::decode($data['ss2']), $publicKey);
         }
 
         return false;
