@@ -68,7 +68,7 @@ class PurchaseDataGenerator
     private static function filterParameters(array $parameters)
     {
         return array_filter($parameters, function ($value) {
-            return $value !== '' && $value !== null;
+            return '' !== $value && null !== $value;
         });
     }
 }
