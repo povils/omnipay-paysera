@@ -30,8 +30,8 @@ class AcceptNotificationResponse extends AbstractResponse implements Notificatio
     {
         parent::__construct($request, $data);
 
-        if ($this->getDataValueOrNull('type') !== 'macro') {
-            throw new InvalidResponseException('Only macro payment callbacks are accepted');
+        if (!in_array($this->getDataValueOrNull('type'), ['macro','EMA'])) {
+            throw new InvalidResponseException('Only macro/EMA payment callbacks are accepted');
         }
 
         if ($this->isSuccessful()) {
