@@ -8,7 +8,7 @@
 
 namespace Omnipay\Paysera\Common;
 
-use Guzzle\Http\ClientInterface;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class SignatureValidator
@@ -51,7 +51,7 @@ class SignatureValidator
      */
     private static function isValidSS2(array $data, ClientInterface $client)
     {
-        $response = $client->get(self::ENDPOINT)->send();
+        $response = $client->request('GET', self::ENDPOINT);
         if (200 === $response->getStatusCode() && false !== $publicKey = openssl_get_publickey($response->getBody())) {
             return 1 === openssl_verify($data['data'], Encoder::decode($data['ss2']), $publicKey);
         }
